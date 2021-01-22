@@ -19,7 +19,7 @@ class Owner(models.Model):
     )
     owned_flats = models.ManyToManyField(
         'Flat', verbose_name='Квартиры в собственности',
-        related_name='owned_apartments'
+        related_name='owners_flats'
     )
 
     def __str__(self):
@@ -82,6 +82,7 @@ class Complaint(models.Model):
     flat = models.ForeignKey(
         Flat, null=True, blank=True,
         on_delete=models.SET_NULL,
-        verbose_name='Квартира на которую пожаловались'
+        verbose_name='Квартира на которую пожаловались',
+        related_name='flats_complained'
     )
     complaint_text = models.TextField(blank=True, verbose_name='Текст жалобы')
