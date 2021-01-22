@@ -11,10 +11,22 @@ CHOICES = (
 )
 
 
-class Flat(models.Model):
+class Owner(models.Model):
     owner = models.CharField("ФИО владельца", max_length=200)
     owners_phonenumber = models.CharField("Номер владельца", max_length=20)
-    owner_pure_phone = PhoneNumberField("Нормализованный номер владельца", blank=True)
+    owner_pure_phone = PhoneNumberField(
+        "Нормализованный номер владельца", blank=True
+    )
+    owned_flats = models.ManyToManyField(
+        'Flat', verbose_name="Квартиры в собственности",
+        related_name='owned_apartments'
+    )
+
+    def __str__(self):
+        return self.owner
+
+
+class Flat(models.Model):
     new_building = models.NullBooleanField(choices=CHOICES)
     created_at = models.DateTimeField(
         "Когда создано объявление",
