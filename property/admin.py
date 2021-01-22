@@ -1,4 +1,4 @@
-from real_estate_agency.settings import AUTH_PASSWORD_VALIDATORS
+# from real_estate_agency.settings import AUTH_PASSWORD_VALIDATORS
 from django.contrib import admin
 
 from .models import Flat, Complaint, Owner
