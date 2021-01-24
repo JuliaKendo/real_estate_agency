@@ -27,7 +27,7 @@ class Owner(models.Model):
 
 
 class Flat(models.Model):
-    new_building = models.NullBooleanField(choices=CHOICES)
+    new_building = models.NullBooleanField(choices=CHOICES, db_index=True)
     created_at = models.DateTimeField(
         'Когда создано объявление',
         default=timezone.now, db_index=True
